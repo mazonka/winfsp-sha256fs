@@ -31,26 +31,11 @@ The implementation must be reliable and maintainable. The first priority is corr
 
 ## 2. Current working baseline
 
-Use the official upstream WinFsp C++ example as the starting point:
+The official upstream WinFsp C++ example as the starting point:
 
 https://github.com/winfsp/winfsp/blob/master/tst/passthrough-cpp/passthrough-cpp.cpp
 
-The corresponding raw source is:
-
-https://raw.githubusercontent.com/winfsp/winfsp/master/tst/passthrough-cpp/passthrough-cpp.cpp
-
 This is the C++ implementation based on `Fsp::FileSystemBase`, not the older C passthrough sample.
-
-The existing source has been compiled from the command line using Microsoft's C++ compiler, `cl.exe`, and the passthrough filesystem has been started and tested successfully.
-
-Two compile issues were resolved during setup:
-
-- A wide-character path was passed to `GetVolumePathNameA`; the code was changed to use `GetVolumePathNameW`.
-- `LookupPrivilegeValueW` received narrow privilege-name constants; the calls were changed to explicit wide literals, `L"SeBackupPrivilege"` and `L"SeRestorePrivilege"`.
-
-These are setup fixes, not content-addressable filesystem features.
-
-**Important:** Preserve a known-working copy of this baseline. Make incremental changes and compile and test after each stage.
 
 ## 3. Terminology and paths
 
@@ -129,21 +114,6 @@ café
 ```
 
 The character rule must be implemented in one central helper function so additional permitted characters can be introduced later by modifying that helper rather than rewriting validation logic throughout the code.
-
-A suitable starting point is:
-
-```cpp
-static bool IsAllowedNameChar(wchar_t c)
-{
-    return (c >= L'A' && c <= L'Z') ||
-           (c >= L'a' && c <= L'z') ||
-           (c >= L'0' && c <= L'9') ||
-           c == L'_' ||
-           c == L'.';
-}
-```
-
-This helper checks individual characters. A separate function must validate an entire name and reject empty names and invalid path components.
 
 ### 5.2 Path validation
 

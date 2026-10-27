@@ -1,0 +1,64 @@
+
+***
+list empty
+
+***
+create 2 files abc
+
+***
+list files 'ls x:/'
+aaa
+abc
+c:/mydrive/:
+_sha256
+aaa
+abc.sha256
+
+c:/mydrive/_sha256:
+ba
+
+c:/mydrive/_sha256/ba:
+ba78
+
+c:/mydrive/_sha256/ba/ba78:
+ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad.refs
+
+c:/mydrive/aaa:
+abc.sha256
+
+***
+cat refs
+abc
+aaa\abc
+
+***
+removing files
+
+***
+list final empty
+c:/mydrive/:
+_deleted
+_sha256
+
+c:/mydrive/_deleted:
+261026_133710_885011100_000
+
+c:/mydrive/_deleted/261026_133710_885011100_000:
+aaa
+
+c:/mydrive/_deleted/261026_133710_885011100_000/aaa:
+abc
+abc.refs
+abc.sha256
+
+c:/mydrive/_sha256:
+ba
+
+c:/mydrive/_sha256/ba:
+ba78
+
+c:/mydrive/_sha256/ba/ba78:
+
+***
+cleanup

@@ -1,0 +1,51 @@
+
+***
+list empty
+
+***
+create empty file 'touch x:/a'
+
+***
+list with 1 file 'ls x:/'
+a
+c:/mydrive/:
+_sha256
+a.sha256
+
+c:/mydrive/_sha256:
+e3
+
+c:/mydrive/_sha256/e3:
+e3b0
+
+c:/mydrive/_sha256/e3/e3b0:
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.refs
+
+***
+removing files in x 'rm x:/*'
+
+***
+list final empty
+c:/mydrive/:
+_deleted
+_sha256
+
+c:/mydrive/_deleted:
+261026_125416_727774600_000
+
+c:/mydrive/_deleted/261026_125416_727774600_000:
+a
+a.refs
+a.sha256
+
+c:/mydrive/_sha256:
+e3
+
+c:/mydrive/_sha256/e3:
+e3b0
+
+c:/mydrive/_sha256/e3/e3b0:
+
+***
+cleanup
